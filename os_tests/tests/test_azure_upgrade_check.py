@@ -259,8 +259,8 @@ hypervkvpd,hyperv-daemons-license,hypervfcopyd,hypervvssd,hyperv-daemons'''
         bz: 2013644
         Verify /etc/ssh/ssh_host_xxx_key permission are 640, group is ssh_keys.
         '''
-        if self.rhel_x_version >= 10:
-            expected = "-rw-------.rootroot"
+        if self.rhel_x_version >= 9:
+            expected = "-rw-------.rootssh_keys"
         else:
             expected = "-rw-r-----.rootssh_keys"
         cmd = "ls -l /etc/ssh/{ssh_host_ecdsa_key,ssh_host_ed25519_key,ssh_host_rsa_key}|awk '{print $1$3$4}'|uniq"
